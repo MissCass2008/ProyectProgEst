@@ -17,37 +17,59 @@ std::cout << "6. Ver estado del repositorio\n";
 std::cout << "7. Reiniciar repositorio\n";
 std::cout << "8. Salir\n\n";
  
- std::cin >> opcion;
- //parte runny//
+std::cin >> opcion;
+ 
+ //Primera Opcion Inicio//
+ 
+ 
  switch (opcion){
 	case 1:
-		if (repositorioexiste==true){
-    	std::cout<< "\nYa existe un repositorio activo ";
-    	std::cout<< "\nRegresando al menu principal\n";
-		break;
-}
-		std::cin.ignore();
-		do{
-		std::cout<< "\nDigite el nombre del repositorio\n";
-	    std::getline(std::cin, nomrep);
-	    if (nomrep.empty()) {
+		 if (repositorioexiste==true){
+    	 std::cout<< "\nYa existe un repositorio activo ";
+    	 std::cout<< "\nRegresando al menu principal\n\n";
+	     break;
+         }
+		 std::cin.ignore();
+		 do{
+		 std::cout<< "\nDigite el nombre del repositorio\n";
+	     std::getline(std::cin, nomrep);
+	     if (nomrep.empty()) {
             std::cout << "\nEl nombre del repositorio no puede quedar vacio. Intente de nuevo.\n";
-		} }while(nomrep.empty()); 
-    do{
-	
-	std::cout<< "\nDigite el nombre del autor\n";
-	std::getline(std::cin, nomaut);
-	if (nomaut.empty()) {
-            std::cout << "/nEl nombre del autor no puede quedar vacio. Intente de nuevo.\n";
-	} 
-    } while (nomaut.empty());
-    
- repositorioexiste = true;
-	
-    std::cout << " Repositorio " << nomrep << " creado exitosamente por " << nomaut << "\n";
-    break; }
-
- //fin parte runny
+	   	 } }while(nomrep.empty()); 
+         do{
+ 	
+	     std::cout<< "\nDigite el nombre del autor\n";
+	     std::getline(std::cin, nomaut);
+	     if (nomaut.empty()) {
+         std::cout << "/nEl nombre del autor no puede quedar vacio. Intente de nuevo.\n";
+	     } 
+         }while (nomaut.empty());
+       
+         repositorioexiste = true;
+      
+         std::cout << "Repositorio " << nomrep << " creado exitosamente por " << nomaut << "\n\n";
+         break; 
+     
+     
+     // Primera Opcion Fin
+     
+     // Segunda Opcion Inicio
+     case 2:
+     	if (repositorioexiste== false){
+     		std::cout << "---------"<<"\nNo existe un repositorio en este momento";
+     		std::cout << "\nCree un Repositorio para ver la informacion\n"<<"---------\n";
+     		break;} 
+		 std:: cout << "---------" << "\nRepositorio: " << nomrep<< "\n";
+		 std:: cout << "Autor: "<<nomaut<<"\n";
+		 std:: cout << "Estado: Inicializado" << "\n";                //Preguntar como exactamente hacer el estado inicializado y los cambios pendientes//
+		 std:: cout << "Cantidad de Commit: " << "\n";
+		 std:: cout << "Ultimo Commit: " << "\n";
+		 std:: cout << "Cambios Pendientes: " << "\n" << "---------\n";
+		 break;
+ }
+		 
+ //Segunda Opcion Fin (Faltan Cambios)//
+ 
 }while (opcion!= 8);
 std::cout << "\n\nProceso finalizado tenga un lindo dia";
 return 0;
