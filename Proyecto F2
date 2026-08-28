@@ -86,14 +86,14 @@ std::cin >> opcion;
 	 	 std::cout << "\n\n1. Agregar Archivo\n";
          std::cout << "2. Modificar Arichivo\n";
          std::cout << "3. Eliminar Archivo\n";
-         std::cout << "4. Cancelar\n";
+         std::cout << "4. Cancelar\n\n";
 		 std:: cin >> minopcion;   
 		 
 	 	switch (minopcion){
 	 		case 1:
 	 		case 2:
 	 		case 3:
-	 			std::cout << "\nPorfavor ingrese el nombre de el archivo\n";
+	 			std::cout << "\nPorfavor ingrese el nombre de el archivo\n\n";
 	 			std::cin >> nomarch;
 	 			cambiospendientes = true;
 	 			std::cout << "\nModificacion de el archivo realizada\n\n";
@@ -107,7 +107,20 @@ std::cin >> opcion;
 	 			
 		 } break;
      //Tercera Parte Fin//
-     
+      
+     //Cuarta Parte Inicio//
+     case 4:
+     	if (repositorioexiste== false){
+     		std::cout << "\n---------"<<"\nNo existe un repositorio en este momento";
+     		std::cout << "\nCree un Repositorio para crear commits\n"<<"---------\n\n";
+     		break;} 
+     	if(cambiospendientes == false){
+     		std::cout << "\n---------" << "\nNo existen cambios para guardar\n"<<"---------\n\n";
+     		break;
+		 }
+		 
+     		
+     	//Cuarta Parte Fin (En proceso)//
  }
 		 
 
@@ -116,3 +129,4 @@ std::cout << "\n\nProceso finalizado tenga un lindo dia";
 return 0;
 	
 }
+
