@@ -1,0 +1,52 @@
+#include <iostream>
+int main(){
+	int opcion;
+	std::string nomrep;
+	std::string nomaut;
+	bool repositorioexiste = false;
+do{
+
+std::cout << "=========MINIGIT=========\n"<< std::endl;
+std::cout << "1. Inicializar repositorio\n";
+std::cout << "2. Ver informacion del repositorio\n";
+std::cout << "3. Simular cambios\n";
+std::cout << "4. Crear commit\n";
+std::cout << "5. Ver ultimo commit\n";
+std::cout << "6. Ver estado del repositorio\n";
+std::cout << "7. Reiniciar repositorio\n";
+std::cout << "8. Salir\n\n";
+ 
+ std::cin >> opcion;
+ 
+}while (opcion!= 8);
+
+std::cout << "\n\nProceso finalizado tenga un lindo dia";
+switch (opcion){
+	case 1:
+		if (repositorioexiste){
+    	std::cout<< "Ya existe un repositorio activo "
+    	std::cout<< "Regresando al menu principal 
+		break;
+}
+		std::cin.ignore();
+		do{
+		std::cout<< "Digite el nombre del repositorio\n";
+	    std::getline(std::cin, nomrep);
+	    if (nomrep.empty()) {
+            std::cout << "El nombre del repositorio no puede quedar vacio. Intente de nuevo.\n";
+		} 
+    } while (nomrep.empty())
+    
+    	
+	}
+	do{	
+	std::cout<< "Digite el nombre del autor\n";
+	std::getline(std::cin, nomaut);
+	if (nomaut.empty()) {
+            std::cout << "El nombre del autor no puede quedar vacio. Intente de nuevo.\n";
+	} 
+    } while (nomaut.empty())
+	repositorioexiste = true;
+    std::cout << " Repositorio " << nomrep << " creado exitosamente por " << nomaut << "\n";
+    break;
+}
