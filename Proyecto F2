@@ -2,9 +2,12 @@
 #include <string>
 int main(){
 	int opcion;
+	int minopcion;
 	std::string nomrep;
 	std::string nomaut;
+	std::string nomarch;
 	bool repositorioexiste = false;
+	bool cambiospendientes = false;
 do{
 
 std::cout << "=========MINIGIT=========\n"<< std::endl;
@@ -47,7 +50,7 @@ std::cin >> opcion;
        
          repositorioexiste = true;
       
-         std::cout << "Repositorio " << nomrep << " creado exitosamente por " << nomaut << "\n\n";
+         std::cout << "\nRepositorio " << nomrep << " creado exitosamente por " << nomaut << "\n\n";
          break; 
      
      
@@ -56,20 +59,58 @@ std::cin >> opcion;
      // Segunda Opcion Inicio
      case 2:
      	if (repositorioexiste== false){
-     		std::cout << "---------"<<"\nNo existe un repositorio en este momento";
-     		std::cout << "\nCree un Repositorio para ver la informacion\n"<<"---------\n";
+     		std::cout << "\n---------"<<"\nNo existe un repositorio en este momento";
+     		std::cout << "\nCree un Repositorio para ver la informacion\n"<<"---------\n\n";
      		break;} 
-		 std:: cout << "---------" << "\nRepositorio: " << nomrep<< "\n";
+		 std:: cout << "\n---------" << "\nRepositorio: " << nomrep<< "\n";
 		 std:: cout << "Autor: "<<nomaut<<"\n";
 		 std:: cout << "Estado: Inicializado" << "\n";                //Preguntar como exactamente hacer el estado inicializado y los cambios pendientes//
 		 std:: cout << "Cantidad de Commit: " << "\n";
 		 std:: cout << "Ultimo Commit: " << "\n";
-		 std:: cout << "Cambios Pendientes: " << "\n" << "---------\n";
-		 break;
+		 if (cambiospendientes == true){
+		 
+		     std:: cout << "Cambios Pendientes: " << "Si" << "\n" << "---------\n\n";
+		 }else{
+		 	std:: cout << "Cambios Pendientes: " << "No" << "\n" << "---------\n\n";
+		 }
+		 break; 
+		  //Segunda Opcion Fin (Faltan Cambios)//
+		 
+	  //Tercera Opcion Inicio	 
+	 case 3:
+	 	if (repositorioexiste== false){
+     		std::cout << "\n---------"<<"\nNo existe un repositorio en este momento";
+     		std::cout << "\nCree un Repositorio para simular cambios\n"<<"---------\n\n";
+     		break;}
+	 	std:: cout <<"\n==Simulacion de Cambios==";
+	 	 std::cout << "\n\n1. Agregar Archivo\n";
+         std::cout << "2. Modificar Arichivo\n";
+         std::cout << "3. Eliminar Archivo\n";
+         std::cout << "4. Cancelar\n";
+		 std:: cin >> minopcion;   
+		 
+	 	switch (minopcion){
+	 		case 1:
+	 		case 2:
+	 		case 3:
+	 			std::cout << "\nPorfavor ingrese el nombre de el archivo\n";
+	 			std::cin >> nomarch;
+	 			cambiospendientes = true;
+	 			std::cout << "\nModificacion de el archivo realizada\n\n";
+	 			break;
+	 		case 4:
+	 			 std::cout << "\nRegresando al menu principal\n\n";
+                break;
+                
+            default:
+                std::cout << "\nOpcion invalida. Intente de nuevo.\n";
+	 			
+		 } break;
+     //Tercera Parte Fin//
+     
  }
 		 
- //Segunda Opcion Fin (Faltan Cambios)//
- 
+
 }while (opcion!= 8);
 std::cout << "\n\nProceso finalizado tenga un lindo dia";
 return 0;
