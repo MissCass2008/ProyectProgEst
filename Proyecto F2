@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 int main(){
 	int opcion;
 	std::string nomrep;
@@ -17,36 +18,38 @@ std::cout << "7. Reiniciar repositorio\n";
 std::cout << "8. Salir\n\n";
  
  std::cin >> opcion;
- 
-}while (opcion!= 8);
-
-std::cout << "\n\nProceso finalizado tenga un lindo dia";
-switch (opcion){
+ //parte runny//
+ switch (opcion){
 	case 1:
-		if (repositorioexiste){
-    	std::cout<< "Ya existe un repositorio activo "
-    	std::cout<< "Regresando al menu principal 
+		if (repositorioexiste==true){
+    	std::cout<< "\nYa existe un repositorio activo ";
+    	std::cout<< "\nRegresando al menu principal\n";
 		break;
 }
 		std::cin.ignore();
 		do{
-		std::cout<< "Digite el nombre del repositorio\n";
+		std::cout<< "\nDigite el nombre del repositorio\n";
 	    std::getline(std::cin, nomrep);
 	    if (nomrep.empty()) {
-            std::cout << "El nombre del repositorio no puede quedar vacio. Intente de nuevo.\n";
-		} 
-    } while (nomrep.empty())
-    
-    	
-	}
-	do{	
-	std::cout<< "Digite el nombre del autor\n";
+            std::cout << "\nEl nombre del repositorio no puede quedar vacio. Intente de nuevo.\n";
+		} }while(nomrep.empty()); 
+    do{
+	
+	std::cout<< "\nDigite el nombre del autor\n";
 	std::getline(std::cin, nomaut);
 	if (nomaut.empty()) {
-            std::cout << "El nombre del autor no puede quedar vacio. Intente de nuevo.\n";
+            std::cout << "/nEl nombre del autor no puede quedar vacio. Intente de nuevo.\n";
 	} 
-    } while (nomaut.empty())
-	repositorioexiste = true;
+    } while (nomaut.empty());
+    
+ repositorioexiste = true;
+	
     std::cout << " Repositorio " << nomrep << " creado exitosamente por " << nomaut << "\n";
-    break;
+    break; }
+
+ //fin parte runny
+}while (opcion!= 8);
+std::cout << "\n\nProceso finalizado tenga un lindo dia";
+return 0;
+	
 }
