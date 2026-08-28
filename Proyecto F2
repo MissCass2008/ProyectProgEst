@@ -3,6 +3,7 @@
 int main(){
 	int opcion;
 	int minopcion;
+    int cantcommits = 0;
 	std::string nomrep;
 	std::string nomaut;
 	std::string nomarch;
@@ -118,10 +119,34 @@ std::cin >> opcion;
      		std::cout << "\n---------" << "\nNo existen cambios para guardar\n"<<"---------\n\n";
      		break;
 		 }
-		 
+		  case 4:
+     	do{
+     		if (!repositorioexiste){
+     			std::cout<< "Debe inicializar un repositorio antes de crear commits. ";
+     			break;
+			 }
+			if (!cambiospendientes){
+				std::cout<< "No existen cambios pendientes para guardar ";
+				break;
+			}
+		std::cin.ignore();
+		do {
+            std::cout << "Ingrese el mensaje del commit:\n";
+            std::getline(std::cin, commit);
+
+            if (commit.empty()) {
+                std::cout << "El mensaje del commit no puede quedar vacio. Intente de nuevo.\n";
+            }
+        } while (commit.empty());
+        cambiospendientes = false;
+        cantcommits++;
+        std::cout << "Commit creado exitosamente:" << commit << "\n";
+        break;
+ } 
+}
      		
-     	//Cuarta Parte Fin (En proceso)//
- }
+     
+ 
 		 
 
 }while (opcion!= 8);
