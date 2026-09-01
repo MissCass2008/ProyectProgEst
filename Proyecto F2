@@ -1,11 +1,15 @@
 #include <iostream>
 #include <string>
+#include <iomanip>
 int main(){
 	int opcion;
 	int minopcion;
+	int cantcommits=0;
+	std::string ultimoCommit;
 	std::string nomrep;
 	std::string nomaut;
 	std::string nomarch;
+	std::string commit;
 	bool repositorioexiste = false;
 	bool cambiospendientes = false;
 do{
@@ -19,9 +23,15 @@ std::cout << "5. Ver ultimo commit\n";
 std::cout << "6. Ver estado del repositorio\n";
 std::cout << "7. Reiniciar repositorio\n";
 std::cout << "8. Salir\n\n";
- 
-std::cin >> opcion;
- 
+
+ while(!(std::cin >>opcion)){
+ 	
+ 	std::cin.clear();
+ 	std::cin.ignore(1000, '\n');
+ 	std::cout << "Digito invalido ingrese un numero\n";
+ }
+
+
  //Primera Opcion Inicio//
  
  
@@ -65,7 +75,7 @@ std::cin >> opcion;
 		 std:: cout << "\n---------" << "\nRepositorio: " << nomrep<< "\n";
 		 std:: cout << "Autor: "<<nomaut<<"\n";
 		 std:: cout << "Estado: Inicializado" << "\n";                //Preguntar como exactamente hacer el estado inicializado y los cambios pendientes//
-		 std:: cout << "Cantidad de Commit: " << "\n";
+		 std:: cout << "Cantidad de Commit: " << cantcommits << "\n";
 		 std:: cout << "Ultimo Commit: " << "\n";
 		 if (cambiospendientes == true){
 		 
@@ -109,24 +119,97 @@ std::cin >> opcion;
      //Tercera Parte Fin//
       
      //Cuarta Parte Inicio//
-     case 4:
-     	if (repositorioexiste== false){
-     		std::cout << "\n---------"<<"\nNo existe un repositorio en este momento";
-     		std::cout << "\nCree un Repositorio para crear commits\n"<<"---------\n\n";
-     		break;} 
-     	if(cambiospendientes == false){
-     		std::cout << "\n---------" << "\nNo existen cambios para guardar\n"<<"---------\n\n";
-     		break;
-		 }
+    case 4:
+         
+         if (repositorioexiste == false) {
+             std::cout << "\n-------------------------------------------------\n";
+             std::cout << "Debe inicializar un repositorio antes de crear commits.\n";
+             std::cout << "-------------------------------------------------\n\n";
+             break;
+         } 
+         
+        
+         if (cambiospendientes == false) {
+             std::cout << "\n-------------------------------------------------\n";
+             std::cout << "No existen cambios para guardar.\n";
+             std::cout << "-------------------------------------------------\n\n";
+             break;
+         }
+         
+         
+         std::cin.ignore();
+         
+       
+         do {
+             std::cout << "\nIngrese el mensaje del commit (10 a 60 caracteres):\n";
+             std::getline(std::cin, ultimoCommit);
+
+             if (ultimoCommit.length() < 10 || ultimoCommit.length() > 60) {
+                 std::cout << "El mensaje debe contener entre 10 y 60 caracteres. Intente de nuevo.\n";
+             }
+         } while (ultimoCommit.length() < 10 || ultimoCommit.length() > 60);
+
+        
+         cantcommits++;
+         cambiospendientes = false;
+
+         std::cout << "\nCommit #" << cantcommits << " creado correctamente.\n\n";
+         break;
+   //Cuarto caso fin//
+
+//Quinto caso Inicio//
+case 5:
+	if (cantcommits == 0){
+		std::cout <<"No existe un commit en este momento cree uno para ver la informacion\n\n";
+		break;
+	}else{
+	
+	std::cout << "Commit #" << cantcommits;
+	std::cout << "\n\nRepositorio:\n"<<nomrep;
+	std::cout <<"\n\nAutor:\n"<<nomaut;
+	std::cout <<"\n\nMensaje:\n"<<"Se agregaron validaciones al menú.";
+	std::cout <<"\n\nEstado:\n"<<"Guardado correctamente\n\n";
+	break;
+	}
+	//Quinto caso Fin//
+	
+	//Sexto Caso Inicio//
+case 6:
+	 if (repositorioexiste == false){
+        std::cout << "\n---------"<<"\nNo existe un repositorio en este momento";
+        std::cout << "\nCree un Repositorio para ver su estado\n"<<"---------\n\n";
+        break;
+    }
+
+    {  
+        std::string estado = "Inicializado | ";
+        estado += cambiospendientes ? "Cambios pendientes" : "Sin cambios pendientes";
+
+      
+
+        std::cout << "\n";
+        std::cout << std::left << std::setw(15) << "Repositorio"
+                   << std::setw(35) << "Estado"
+                   << "Ultimo commit" << "\n";
+        std::cout << std::string(65, '-') << "\n";
+        std::cout << std::left << std::setw(15) << nomrep
+                   << std::setw(35) << estado << "     #"
+                   << cantcommits << "\n\n";
+    }
+    break;
+    //Sexto caso Fin//
+    
+    //Septimo Caso Inicio//
+	}
+	
+
+//Cuarta Parte Fin (En proceso)//
+ 
 		 
-     		
-     	//Cuarta Parte Fin (En proceso)//
- }
-		 
+
 
 }while (opcion!= 8);
 std::cout << "\n\nProceso finalizado tenga un lindo dia";
 return 0;
 	
 }
-
