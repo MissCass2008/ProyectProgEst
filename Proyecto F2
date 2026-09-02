@@ -30,10 +30,8 @@ std::cout << "8. Salir\n\n";
  	std::cin.ignore(1000, '\n');
  	std::cout << "Digito invalido ingrese un numero\n";
  }
-
-
+}
  //Primera Opcion Inicio//
- 
  
  switch (opcion){
 	case 1:
@@ -63,10 +61,10 @@ std::cout << "8. Salir\n\n";
          std::cout << "\nRepositorio " << nomrep << " creado exitosamente por " << nomaut << "\n\n";
          break; 
      
-     
      // Primera Opcion Fin
      
      // Segunda Opcion Inicio
+     
      case 2:
      	if (repositorioexiste== false){
      		std::cout << "\n---------"<<"\nNo existe un repositorio en este momento";
@@ -76,7 +74,7 @@ std::cout << "8. Salir\n\n";
 		 std:: cout << "Autor: "<<nomaut<<"\n";
 		 std:: cout << "Estado: Inicializado" << "\n";                //Preguntar como exactamente hacer el estado inicializado y los cambios pendientes//
 		 std:: cout << "Cantidad de Commit: " << cantcommits << "\n";
-		 std:: cout << "Ultimo Commit: " << "\n";
+		 std:: cout << "Ultimo Commit: " << "#" << cantcommits "\n";
 		 if (cambiospendientes == true){
 		 
 		     std:: cout << "Cambios Pendientes: " << "Si" << "\n" << "---------\n\n";
@@ -198,9 +196,53 @@ case 6:
     }
     break;
     //Sexto caso Fin//
+    // Septimo Caso Inicio
+    case 7:
+        if (!repositorioexiste) {
+            std::cout << "\n-------------------------------------------------\n";
+            std::cout << "No existe un repositorio para reiniciar.\n";
+            std::cout << "-------------------------------------------------\n\n";
+            break;
+        }
+
+        int opcionReiniciar;
+        std::cout << "\n¿Desea eliminar toda la informacion?\n";
+        std::cout << "1. Si\n";
+        std::cout << "2. No\n";
+        std::cout << "Seleccione una opción: ";
+
+        while (!(std::cin >> opcionReiniciar) || (opcionReiniciar != 1 && opcionReiniciar != 2)) {
+            std::cin.clear();
+            std::cin.ignore(1000, '\n');
+            std::cout << "Opcion invalida. Ingrese 1 para Si o 2 para No: ";
+        }
+
+        if (opcionReiniciar == 1) {
+            
+            repositorioexiste = false;
+            cambiospendientes = false;
+            cantcommits = 0;
+            nomrep = "";
+            nomaut = "";
+            nomarch = "";
+            ultimoCommit = "";
+
+            std::cout << "\nEl repositorio ha sido reiniciado exitosamente.\n\n";
+        } else {
+            std::cout << "\nOperación cancelada. Regresando al menú principal.\n\n";
+        }
+        break;
+    // Septimo Caso Fin
     
-    //Septimo Caso Inicio//
+    //Caso Ocho inicio//
+    case 8:
+    	break;
+    // Caso Ocho Fin//
+    default:
+    	std::cout << "Numero invalido ingrese uno el cual este en el menu";
+    	break;
 	}
+
 	
 
 //Cuarta Parte Fin (En proceso)//
