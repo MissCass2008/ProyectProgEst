@@ -1,6 +1,21 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+ 
+void menuinicio(){
+	std::cout << "=========MINIGIT=========\n"<< std::endl;
+	std::cout << "1. Inicializar repositorio\n";
+	std::cout << "2. Ver informacion del repositorio\n";
+	std::cout << "3. Simular cambios\n";
+	std::cout << "4. Crear commit\n";
+	std::cout << "5. Ver ultimo commit\n";
+	std::cout << "6. Ver estado del repositorio\n";
+	std::cout << "7. Reiniciar repositorio\n";
+	std::cout << "8. Salir\n\n";
+}
+
+
+ 
 int main(){
 	int opcion;
 	int minopcion;
@@ -13,16 +28,7 @@ int main(){
 	bool repositorioexiste = false;
 	bool cambiospendientes = false;
 do{
-
-std::cout << "=========MINIGIT=========\n"<< std::endl;
-std::cout << "1. Inicializar repositorio\n";
-std::cout << "2. Ver informacion del repositorio\n";
-std::cout << "3. Simular cambios\n";
-std::cout << "4. Crear commit\n";
-std::cout << "5. Ver ultimo commit\n";
-std::cout << "6. Ver estado del repositorio\n";
-std::cout << "7. Reiniciar repositorio\n";
-std::cout << "8. Salir\n\n";
+menuinicio();
 
  while(!(std::cin >>opcion)){
  	
@@ -30,7 +36,7 @@ std::cout << "8. Salir\n\n";
  	std::cin.ignore(1000, '\n');
  	std::cout << "Digito invalido ingrese un numero\n";
  }
-}
+
  //Primera Opcion Inicio//
  
  switch (opcion){
@@ -52,7 +58,7 @@ std::cout << "8. Salir\n\n";
 	     std::cout<< "\nDigite el nombre del autor\n";
 	     std::getline(std::cin, nomaut);
 	     if (nomaut.empty()) {
-         std::cout << "/nEl nombre del autor no puede quedar vacio. Intente de nuevo.\n";
+         std::cout << "\nEl nombre del autor no puede quedar vacio. Intente de nuevo.\n";
 	     } 
          }while (nomaut.empty());
        
@@ -74,7 +80,7 @@ std::cout << "8. Salir\n\n";
 		 std:: cout << "Autor: "<<nomaut<<"\n";
 		 std:: cout << "Estado: Inicializado" << "\n";                //Preguntar como exactamente hacer el estado inicializado y los cambios pendientes//
 		 std:: cout << "Cantidad de Commit: " << cantcommits << "\n";
-		 std:: cout << "Ultimo Commit: " << "#" << cantcommits "\n";
+		 std:: cout << "Ultimo Commit: " << "#" << cantcommits << "\n";
 		 if (cambiospendientes == true){
 		 
 		     std:: cout << "Cambios Pendientes: " << "Si" << "\n" << "---------\n\n";
@@ -165,7 +171,7 @@ case 5:
 	std::cout << "Commit #" << cantcommits;
 	std::cout << "\n\nRepositorio:\n"<<nomrep;
 	std::cout <<"\n\nAutor:\n"<<nomaut;
-	std::cout <<"\n\nMensaje:\n"<<"Se agregaron validaciones al menú.";
+	std::cout <<"\n\nMensaje:\n"<<"Se agregaron validaciones al menu.";
 	std::cout <<"\n\nEstado:\n"<<"Guardado correctamente\n\n";
 	break;
 	}
@@ -209,7 +215,7 @@ case 6:
         std::cout << "\n¿Desea eliminar toda la informacion?\n";
         std::cout << "1. Si\n";
         std::cout << "2. No\n";
-        std::cout << "Seleccione una opción: ";
+        std::cout << "Seleccione una opcion: ";
 
         while (!(std::cin >> opcionReiniciar) || (opcionReiniciar != 1 && opcionReiniciar != 2)) {
             std::cin.clear();
@@ -229,7 +235,7 @@ case 6:
 
             std::cout << "\nEl repositorio ha sido reiniciado exitosamente.\n\n";
         } else {
-            std::cout << "\nOperación cancelada. Regresando al menú principal.\n\n";
+            std::cout << "\nOperacion cancelada. Regresando al menu principal.\n\n";
         }
         break;
     // Septimo Caso Fin
