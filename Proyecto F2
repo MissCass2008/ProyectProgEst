@@ -1,4 +1,4 @@
-#include <iostream>
+#in#include <iostream>
 #include <string>
 #include <iomanip>
  
@@ -13,8 +13,13 @@ void menuinicio(){
 	std::cout << "7. Reiniciar repositorio\n";
 	std::cout << "8. Salir\n\n";
 }
-
-
+void bloqueodedigitos(int opcionmenu){
+while(!(std::cin >>opcionmenu)){
+ 	
+ 	std::cin.clear();
+ 	std::cin.ignore(1000, '\n');
+ 	std::cout << "Digito invalido ingrese un numero\n";
+}}
  
 int main(){
 	int opcion;
@@ -30,12 +35,8 @@ int main(){
 do{
 menuinicio();
 
- while(!(std::cin >>opcion)){
- 	
- 	std::cin.clear();
- 	std::cin.ignore(1000, '\n');
- 	std::cout << "Digito invalido ingrese un numero\n";
- }
+ bloqueodedigitos(opcion);
+ 
 
  //Primera Opcion Inicio//
  
@@ -96,13 +97,16 @@ menuinicio();
      		std::cout << "\n---------"<<"\nNo existe un repositorio en este momento";
      		std::cout << "\nCree un Repositorio para simular cambios\n"<<"---------\n\n";
      		break;}
+             do{
 	 	std:: cout <<"\n==Simulacion de Cambios==";
 	 	 std::cout << "\n\n1. Agregar Archivo\n";
          std::cout << "2. Modificar Arichivo\n";
          std::cout << "3. Eliminar Archivo\n";
          std::cout << "4. Cancelar\n\n";
 		 std:: cin >> minopcion;   
-		 
+         
+		 bloqueodedigitos(minopcion);
+         
 	 	switch (minopcion){
 	 		case 1:
 	 		case 2:
@@ -120,6 +124,8 @@ menuinicio();
                 std::cout << "\nOpcion invalida. Intente de nuevo.\n";
 	 			
 		 } break;
+         }while(minopcion !=1 || minopcion !=2 || minopcion !=3 || minopcion != 4);
+         break;
      //Tercera Parte Fin//
       
      //Cuarta Parte Inicio//
