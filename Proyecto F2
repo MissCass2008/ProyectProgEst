@@ -120,14 +120,6 @@ int main() {
                     }
                 } while (nomrep.empty());
 
-                do {
-                    std::cout << "\nDigite el nombre del autor\n";
-                    std::getline(std::cin, nomaut);
-                    if (nomaut.empty()) {
-                        std::cout << "\nEl nombre del autor no puede quedar vacio. Intente de nuevo.\n";
-                    }
-                } while (nomaut.empty());
-
                 repositorioexiste = true;
                 std::cout << "\nRepositorio " << nomrep << " creado exitosamente por " << nomaut << "\n\n";
                 break;
