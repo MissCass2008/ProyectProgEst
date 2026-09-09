@@ -152,7 +152,7 @@ int main() {
                         case 1:
                         case 2:
                         case 3:
-                            // ARREGLO 2: ahora se valida que el nombre del archivo no quede vacio
+                      
                             std::cin.ignore();
                             do {
                                 std::cout << "\nPorfavor ingrese el nombre del archivo\n";
